@@ -3734,3 +3734,116 @@ a.ohf-btn-solid {
     display: none;
   }
 }
+
+/* ---------- publish ---------- */
+
+/* Download keeps the file, Publish sends it on: the two share the row and its
+   weight, so neither reads as the secondary path. */
+.ohf-btn-solid.ohf-viewer-publish {
+  flex: 1;
+  height: 36px;
+  justify-content: center;
+}
+.ohf-publish-panel {
+  width: 460px;
+}
+.ohf-publish-panel .ohf-keys-copy a {
+  color: var(--tx);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ohf-publish-loading {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0 32px;
+}
+.ohf-publish-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ohf-publish-target {
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--s3);
+  color: var(--tx2);
+  font-size: 12.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-publish-target:hover {
+  border-color: var(--tx3);
+  color: var(--tx);
+}
+.ohf-publish-target[data-on] {
+  background: var(--accent-08);
+  border-color: var(--accent-32);
+  color: var(--accent);
+}
+.ohf-publish-caption {
+  height: auto;
+  min-height: 92px;
+  padding: 9px 11px;
+  line-height: 1.45;
+  resize: vertical;
+  font-family: inherit;
+}
+.ohf-publish-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ohf-publish-result {
+  display: grid;
+  grid-template-columns: 18px auto 1fr;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  font-size: 13px;
+}
+.ohf-publish-result-mark {
+  display: flex;
+  justify-content: center;
+  color: var(--tx3);
+}
+.ohf-publish-result[data-state="done"] .ohf-publish-result-mark {
+  color: var(--accent);
+}
+.ohf-publish-result[data-state="failed"] .ohf-publish-result-mark,
+.ohf-publish-result-error {
+  color: var(--danger);
+}
+.ohf-publish-result-name {
+  font-weight: 600;
+}
+.ohf-publish-result-link,
+.ohf-publish-result-note,
+.ohf-publish-result-error {
+  justify-self: end;
+  font-size: 12px;
+  text-align: right;
+}
+.ohf-publish-result-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--tx);
+  text-decoration: none;
+}
+.ohf-publish-result-link:hover {
+  color: var(--accent);
+}
+.ohf-publish-result-note {
+  color: var(--tx3);
+}

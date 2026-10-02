@@ -15,7 +15,9 @@ import {
   OpenOutIcon,
   RetryIcon,
   TrashIcon,
+  UploadIcon,
 } from "./icons";
+import { PublishDialog } from "./publish-dialog";
 
 /* Backstop only: the exit normally ends on the panel's own animationend. A
    backgrounded tab can defer that event indefinitely, and a dialog that never
@@ -113,6 +115,8 @@ export function Viewer({
      of a run it was not for. */
   const [save, setSave] = useState<{ id: string; state: "saving" | "failed" } | null>(null);
   const saveState = save?.id === item.id ? save.state : null;
+  /* Held by run for the same reason: stepping to another one closes it. */
+  const [publishing, setPublishing] = useState<string | null>(null);
 
   const [w = 3, h = 2] = item.ratio.split("/").map((n) => Number.parseFloat(n));
   /* The platform rounds results onto its own pixel grid, so a run submitted at
@@ -345,6 +349,17 @@ export function Viewer({
                   {saveState === "saving" ? "Saving" : saveState === "failed" ? "Open file" : "Download"}
                 </a>
               )}
+              {url && (
+                <button
+                  type="button"
+                  className="ohf-btn-solid ohf-viewer-publish"
+                  title="Post this run to TikTok, Instagram, YouTube and more"
+                  onClick={() => setPublishing(item.id)}
+                >
+                  <UploadIcon />
+                  Publish
+                </button>
+              )}
               {/* Between the two keeping actions, the way it sits between them on
                   the card: the middle is the hardest slot to hit by accident,
                   and this is the one press here that discards a run. It leaves
@@ -376,6 +391,7 @@ export function Viewer({
           </footer>
         </aside>
       </div>
+      {publishing === item.id && <PublishDialog item={item} onClose={() => setPublishing(null)} />}
     </dialog>
   );
 }
