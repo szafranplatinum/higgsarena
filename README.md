@@ -68,6 +68,22 @@ Next.js 16 App Router on Vercel · React 19 · plain CSS · Zustand · pnpm
   hairline, in the strip the composer already reserves.
 - **Empty states** that hand you a starter prompt instead of a blank grid.
 
+### Publish
+
+- **Post a finished run to social.** The viewer's **Publish** button sends the
+  result to TikTok, Instagram, YouTube, LinkedIn, Facebook, X, Threads,
+  Pinterest, Bluesky and more through [Upload-Post](https://www.upload-post.com).
+  The CDN URL is handed over as is, so nothing is re-downloaded or re-uploaded
+  by the studio.
+- **Your own Upload-Post key**, checked against Upload-Post before it is saved
+  and kept in its own httpOnly cookie next to the platform key. The dialog lists
+  the accounts connected to your profile and only offers the destinations that
+  can take the run: YouTube for video, every other connected account for both.
+- **Caption prefilled with the prompt**, editable before sending. Videos are
+  labelled as AI-generated on TikTok.
+- **Live per-platform result** with a link to each published post, polled until
+  every destination has finished.
+
 ### State and errors
 
 - **History persists** in IndexedDB in this browser (60 records). Favorites are
